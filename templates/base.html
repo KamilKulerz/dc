@@ -46,6 +46,7 @@
 
   <script src="{% static 'js/qrcode.js' %}"></script>
 
+  <link href="{% static 'base/base.css' %}" rel="stylesheet">
 
 
 
@@ -54,73 +55,6 @@
 
 
 
-  <style>
-    .bg-a-dark {
-      background-color: black
-    }
-
-    #nav_selection .nav-item .nav-link {
-      font-size: 1.7rem;
-      padding: 0rem 1rem;
-    }
-
-
-    @media (min-width: 992px) {
-      .animate {
-        animation-duration: 0.3s;
-        -webkit-animation-duration: 0.3s;
-        animation-fill-mode: both;
-        -webkit-animation-fill-mode: both;
-      }
-    }
-
-    @keyframes slideIn {
-      0% {
-        transform: translateY(1rem);
-        opacity: 0;
-      }
-
-      100% {
-        transform: translateY(0rem);
-        opacity: 1;
-      }
-
-      0% {
-        transform: translateY(1rem);
-        opacity: 0;
-      }
-    }
-
-    @-webkit-keyframes slideIn {
-      0% {
-        -webkit-transform: transform;
-        -webkit-opacity: 0;
-      }
-
-      100% {
-        -webkit-transform: translateY(0);
-        -webkit-opacity: 1;
-      }
-
-      0% {
-        -webkit-transform: translateY(1rem);
-        -webkit-opacity: 0;
-      }
-    }
-
-    .slideIn {
-      -webkit-animation-name: slideIn;
-      animation-name: slideIn;
-    }
-
-
-
-    body {
-      overflow-x: hidden;
-    }
-
-
-  </style>
 
 </head>
 
@@ -137,10 +71,6 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
-
-
-
-
         <li hidden class="nav-item">
           <a id="help_link" class="nav-link" href="#" data-toggle="modal" data-target="#helpModal">Help</a>
         </li>
@@ -148,10 +78,6 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'loader:about' %}">About</a>
         </li>
-
-
-
-
 
         <li class="nav-item">
           {% if text_name %}
@@ -194,11 +120,7 @@
 {% endif %}
 
 
-  <script>
 
-
-
-  </script>
 
 </body>
 
