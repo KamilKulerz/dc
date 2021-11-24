@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<script src="{% static 'lice/no_access.js' %}"></script>
+
+{% comment %} {% csrf_token %} {% endcomment %}
+
+<div class="card">
+  <div class="card">
+    <div class="card-body">
+      <h1 style="text-align: center">You don't have access</h1>
+    </div>
+  </div>
+
+
+  <form id="request_access" method="POST" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+    <div class="form-group">
+      <div class="card-body">
+        <label for="exampleFormControlTextarea1">Describe to which plant and project you need access</label>
+        <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="card">
+      <input class="btn btn-outline-secondary" type="Submit" name="request_access_button" value="Request access" />
+    </div>
+
+  </form>
+</div>
+
+
+
+
+{% endblock %}

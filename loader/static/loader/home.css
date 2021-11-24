@@ -1,0 +1,23 @@
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+#spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    /* High z-index so it is on top of the page */
+    top: calc(50% - 5vh);
+    left: calc(50% - 5vw);
+}
+
+th,
+td {
+    white-space: nowrap;
+}
+
+div.dataTables_wrapper {
+    margin: 0 auto;
+}

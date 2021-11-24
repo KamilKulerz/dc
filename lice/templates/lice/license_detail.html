@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script src="{% static 'lice/license_detail.js' %}"></script>
+
+<div class="card">
+
+    <div class="card-body">
+        <div class="card">
+            <div class="card-header">Single license ID: {{data.id}}</div>
+            <div class="card-body">
+                <p>DATA: {{data.data}}</p>
+                <p>IP: {{data.ipaddress}}</p>
+                <p>License: {{data.license}}</p>
+
+                <div>
+                    <div id="qrcode"></div>
+                </div>
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock %}

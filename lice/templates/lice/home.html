@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %} License management {% endblock %}
+{% load static %}
+{% block content %}
+ <script src="{% static 'lice/home.js' %}"></script>
+ <link href="{% static 'lice/home.css' %}" rel="stylesheet">
+
+
+{% comment %} {% csrf_token %} {% endcomment %}
+
+
+
+<div class="card">
+  <div class="card-body">
+
+
+    <div class="row justify-content-center">
+      <div class="col-9">
+
+
+        <div class="card">
+          <table class="table table-hover">
+            <tr>
+              <th id="#license-id">Id</th>
+              <th id="#license-data">Data</th>
+              <th id="#license-license">License</th>
+              <th id="#license-details">Details</th>
+              <th id="#license-sign">Sign</th>
+              <th id="#license-clear">Clear</th>
+            </tr>
+
+
+
+            {% for object in objects %}
+
+
+            <tr>
+              <td>{{object.id}}</td>
+              <td>{{object.data}}</td>
+              {% if object.license == "" or object.license is None%}
+              <td class="bold-green"></td>
+              {% else %}
+              <td class="bold-green">Signed</td>
+              {% endif %}
+              <td>
+                <a href="{% url 'lice:license_detail_view' object.id %}" type="button"
+                  class="btn btn-outline-primary">Details</a>
+
+              </td>
+              <td>
+                {% if object.license == "" or object.license is None%}
+                <button type="button" class="btn btn-outline-success"
+                  data-url="{% url 'lice:sign_license_view' object.id %}" onclick="openModal(this)">Sign</button>
+                {% endif %}
+              </td>
+              <td>
+                {% if object.license != ""  and object.license is not None%}
+                <button type="button" class="btn btn-outline-danger"
+                  data-url="{% url 'lice:license_clear_view' object.id %}" onclick="openModalClear(this)">Clear</button>
+                {% endif%}
+              </td>
+
+
+            </tr>
+
+
+            {% endfor %}
+
+          </table>
+
+                <div class="card">
+                  <a href="{% url 'lice:create' %}" type="button"class="btn btn-outline-primary">Create new</a>
+                </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">License</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to sign license?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a id="#modalLink" href="" role="button" class="btn btn-success">Sign</a>
+        {% comment %} <button type="button" class="btn btn-primary">Save changes</button> {% endcomment %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenterClear" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">License</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to remove this license?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a id="#modalLinkClear" href="" role="button" class="btn btn-danger">Clear</a>
+        {% comment %} <button type="button" class="btn btn-primary">Save changes</button> {% endcomment %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
